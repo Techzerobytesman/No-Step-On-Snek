@@ -21,9 +21,9 @@ def report_grade(percent):
 def vowel(letter):
     vowels = 'aeiouAEIOU'
     if letter in vowels:
-        print("True")
+        return("True")
     else:
-        print("False")
+        return("False")
 
 def letter_in_word(guess, word):
     if guess in word:
