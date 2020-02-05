@@ -75,8 +75,12 @@ def guess_once():
 
 def quiz_decimal(low, high):
     print('Type a number between', low, 'and', high, '.')
-    number = int(raw_input('Number: '))
+    number = float(raw_input('Number: '))
     if number >= high:
-        print('')
+        print('No, ', number, 'is greater than', high,)
+    if number <= low:
+        print('No, ', number, 'is less than', low,)
+    else:
+        print('Yes, ', low, ' <= ', number, ' <= ', high)
 
 
