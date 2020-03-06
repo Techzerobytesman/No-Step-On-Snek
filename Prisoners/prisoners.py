@@ -30,22 +30,45 @@ def move(my_history, their_history, my_score, their_score, opponent_name):
     Returns 'c' or 'b' for collude or betray.
     """
 
-    if 'b' in their_history[-4
-    :]:  # If the other player has betrayed within last 4 rounds,
-        return 'b'  # Betray.
-    else:
-        if 'b' not in their_history [-6]:  # If other player has colluded past 4 rounds
+    if len(their_history) >= 4:
+        if 'b' in their_history[-4]:  # If the other player has betrayed within last 4 rounds,
             return 'b'  # Betray
         else:
-            if 'c' in my_history[-3]: #If we colluded the past three times
-                return 'b' #Betray
+            if len(their_history) >= 6:
+                if 'b' not in their_history[-6]:  # If other player has colluded past 4 rounds
+                    return 'b'  # Betray
             else:
-                if my_score >= their_score + 2*their_score: #math
-                    return 'c' #collude
+                if len(my_history) >= 4:
+                    if 'c' in my_history[-3]:  # If we colluded the past three times
+                        return 'b'  # Betray
                 else:
-                    if their_score >= my_score + 2*their_score: #math
-                        return 'b' #betray
+                    if my_score >= their_score + 2 * their_score:  # math
+                        return 'c'  # collude
                     else:
-                        if 'b' not in their_history[-2]
-                            return 'c' #collude
-                        else: return 'b' and print("Death Before Surrender!")
+                        if their_score >= my_score + 2 * their_score:  # math
+                            return 'b'  # betray
+                        else:
+                            if len(their_history) >= 2:
+                                if 'b' not in their_history[-2]:
+                                    return 'c'  # collude
+                            else:
+                                if 'b' not in their_history[-2]:
+                                    return 'c'  # collude
+                                else:
+                                    return 'b' and print("Death Before Surrender!")
+
+    else:
+        if my_score >= their_score + 2 * their_score:  # math
+            return 'c'  # collude
+        else:
+            if their_score >= my_score + 2 * their_score:  # math
+                return 'b'  # betray
+            else:
+                if their_history >= 2:
+                    if 'b' not in their_history[-2]:
+                        return 'c'  # collude
+                else:
+                    if 'b' not in their_history[-2]:
+                        return 'c'  # collude
+                    else:
+                        return 'b' and print("Death Before Surrender!")
